@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: api
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - api_network
+
+  api:
+    build:
+      context: .
+    container_name: sistem-gudang-api
+    ports:
+      - "8000:80"
+    depends_on:
+      - postgres
+    networks:
+      - api_network
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres_db
+      DB_PORT: 5432
+      DB_DATABASE: api
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    restart: always
+
+volumes:
+  pgdata:
+
+networks:
+  api_network:
+    driver: bridge
