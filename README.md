@@ -57,3 +57,8 @@ Setelah semua layanan berjalan, akses aplikasi di:
 Untuk dokumentasi API yang lebih rinci, silakan merujuk ke koleksi Postman kami:
 
 [Koleksi Postman Sistem Gudang API](https://elements.getpostman.com/redirect?entityId=31192578-44bc2019-864e-46af-94bd-02652f253619&entityType=collection)
+
+Atau gunakan perintah berikut untuk menghasilkan Postman Collection:
+```
+php artisan export:postman
+```
