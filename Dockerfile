@@ -6,7 +6,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 ENV SERVER_NAME=:80
 
-RUN install-php-extensions pdo_pgsql
+RUN install-php-extensions pdo_pgsql zip
 
 COPY . /app
 
